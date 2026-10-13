@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the birthday gift journey in the index route with local React state, because its chapters are one continuous interactive experience.
+- Define birthday visuals and animations in the global design system, and use the shared Button for controls.
