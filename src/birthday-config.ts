@@ -24,9 +24,10 @@ export type BirthdayInfo = {
 };
 
 export function getBirthdayInfo(now: Date = new Date()): BirthdayInfo {
-  const [birthYear, month, day] = birthdayConfig.birthDate
-    .split("-")
-    .map(Number);
+  const [birthYearText, monthText, dayText] = birthdayConfig.birthDate.split("-");
+  const birthYear = Number(birthYearText);
+  const month = Number(monthText);
+  const day = Number(dayText);
 
   const today = startOfDay(now);
   const isToday =
