@@ -307,4 +307,18 @@ h1 { font-family: var(--font-display); font-weight: 400; font-size: 64px; line-h
  .chapter-nav { width: 100%; max-width: 370px; gap: 12px; margin-top: 24px; }.round-button { height: 44px; width: 44px; }.love-grid { width: 100%; max-width: 365px; gap: 14px; }.love-note { height: 170px; padding: 20px; }.love-note .handwritten { font-size: 21px; }.note-message { font-size: 25px; }.wish-message { font-size: 25px; }.final-cake { height: 330px; }.final-cake img { width: 320px; height: 320px; }.finale-scene { padding-top: 20px; }
 }
 @media (max-width: 360px) { h1 { font-size: 39px; }.welcome-script { font-size: 25px; }.cake-stage { height: 290px; }.cake-image { height: 280px; width: 280px; }.love-note { padding: 15px; }.scene:not(.welcome) h1 { font-size: 31px; } }
+.date-badge { display: inline-flex; align-items: center; gap: 7px; background: var(--paper); color: var(--primary); border: 1px solid var(--border); border-radius: 999px; padding: 7px 16px; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; box-shadow: var(--soft-shadow); }
+.h1-name { color: var(--primary); }
+.countdown-wrap { margin-top: 12px; }
+.countdown-label { color: var(--primary); font-size: 10px; font-weight: 700; letter-spacing: 3px; }
+.countdown { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
+.countdown-box { background: var(--paper); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--soft-shadow); min-width: 66px; padding: 10px 8px 8px; }
+.count-num { display: block; font-family: var(--font-display); font-size: 27px; line-height: 1; color: var(--foreground); }
+.count-label { display: block; margin-top: 5px; font-size: 8px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted-foreground); }
+.today-banner { font-size: 30px; color: var(--primary); margin-top: 14px; }
+.age-balloon { position: absolute; z-index: 1; font-family: var(--font-display); font-size: 118px; line-height: 1; background: linear-gradient(160deg, var(--pink), var(--lavender) 55%, var(--coral)); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 10px 14px oklch(0.5 0.08 320 / .25)); animation: cake-float 6s ease-in-out infinite; }
+.age-balloon-0 { left: 8px; top: 44px; transform: rotate(-8deg); }
+.age-balloon-1 { right: 8px; top: 122px; transform: rotate(8deg); animation-delay: -3s; }
+.age-balloon-single { left: 0; right: 0; margin: auto; width: fit-content; top: 40px; }
+@media (max-width: 700px) { .date-badge { font-size: 9px; padding: 6px 13px; letter-spacing: 2px; } .countdown-wrap { margin-top: 8px; } .countdown { gap: 8px; } .countdown-box { min-width: 58px; padding: 8px 6px 7px; border-radius: 10px; } .count-num { font-size: 22px; } .count-label { font-size: 7px; } .today-banner { font-size: 26px; } .age-balloon { font-size: 86px; } .age-balloon-0 { left: 0; top: 32px; } .age-balloon-1 { right: 0; top: 138px; } }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; transition: none !important; }.confetti i { display: none; } }
