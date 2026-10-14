@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, CalendarDays, Gift, Heart, RotateCcw, Sparkles, 
 import { Button } from "@/components/ui/button";
 import cake from "@/assets/birthday-cake.png";
 import { birthdayConfig, getBirthdayInfo, getCountdown } from "@/birthday-config";
+import { CandleScene, SongScene } from "@/components/birthday-scenes";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const chapters = ["The letter", "Little love notes", "Your wishes", "With all my love"];
+const chapters = ["The letter", "Little love notes", "Your wishes", "Our song", "The candles", "With all my love"];
 const notes = ["The way you make ordinary days feel extraordinary.", "Your big heart, and all the little kindnesses.", "Your laugh. Especially the one you can't hold back.", "The world is a brighter place with you in it."];
 const wishes = ["A year of beautiful little beginnings.", "More belly laughs and less worrying.", "The courage to follow your biggest dreams.", "Love that finds you in the smallest moments.", "Every bit of happiness your heart can hold."];
 
@@ -105,9 +106,11 @@ function Index() {
 
         {step === 2 && <section className="scene wishes-scene" key="wishes"><div className="eyebrow">MAKE A WISH</div><h1>Wishes for your new year</h1><p className="handwritten scene-subtitle">A little jar of good things to come.</p><Button variant="ghost" className="wish-jar" onClick={() => { setWish((value) => (value + 1) % wishes.length); celebrate(); }} aria-label="Open a birthday wish"><span className="jar-lid" /><span className="jar-bow">🎀</span><span className="jar-glass">{Array.from({ length: 12 }, (_, i) => <span key={i}>★</span>)}</span><span className="jar-label handwritten">wishes for you</span></Button><p className="wish-message handwritten" aria-live="polite">{wish < 0 ? "May all your wishes find their way to you." : wishes[wish]}</p><Button variant="outline" className="wish-button" onClick={() => { setWish((value) => (value + 1) % wishes.length); celebrate(); }}><Sparkles size={17} />One more wish</Button></section>}
 
-        {step === 3 && <section className="scene finale-scene" key="finale"><div className="final-cake"><img src={cake} alt="Your birthday cake" width={1024} height={1024} /></div><div className="eyebrow">HERE’S TO YOUR NEXT CHAPTER</div><h1>Happy birthday, {birthdayConfig.name}!</h1><p className="handwritten finale-script">With all my love, always.</p><div className="final-hearts" aria-hidden="true">♡ <span>♥</span> ♡</div><Button variant="birthday" onClick={restart}><RotateCcw size={19} />Watch again</Button></section>}
+        {step === 3 && <SongScene />}
+        {step === 4 && <CandleScene onCelebrate={celebrate} />}
+        {step === 5 && <section className="scene finale-scene" key="finale"><div className="final-cake"><img src={cake} alt="Your birthday cake" width={1024} height={1024} /></div><div className="eyebrow">HERE’S TO YOUR NEXT CHAPTER</div><h1>Happy birthday, {birthdayConfig.name}!</h1><p className="handwritten finale-script">With all my love, always.</p><div className="final-hearts" aria-hidden="true">♡ <span>♥</span> ♡</div><Button variant="birthday" onClick={restart}><RotateCcw size={19} />Watch again</Button></section>}
 
-        {step >= 0 && <nav className="chapter-nav" aria-label="Birthday gift chapters"><Button variant="round" onClick={() => setStep(step - 1)} aria-label="Previous chapter"><ArrowLeft size={21} /></Button><div className="chapter-progress"><span className="chapter-name">{chapters[step]}</span><div className="chapter-dots">{chapters.map((label, i) => <Button key={label} variant="ghost" className={`chapter-dot ${i === step ? "active" : ""}`} onClick={() => { setStep(i); if (i === 3) celebrate(); }} aria-label={`Go to ${label}`} aria-current={i === step ? "step" : undefined} />)}</div></div><span className="chapter-count">{step + 1}<span> / 4</span></span><Button variant="round" className="next-chapter" disabled={step === 3} onClick={() => { setStep(step + 1); if (step === 2) celebrate(); }} aria-label="Next chapter"><ArrowRight size={21} /></Button></nav>}
+        {step >= 0 && <nav className="chapter-nav" aria-label="Birthday gift chapters"><Button variant="round" onClick={() => setStep(step - 1)} aria-label="Previous chapter"><ArrowLeft size={21} /></Button><div className="chapter-progress"><span className="chapter-name">{chapters[step]}</span><div className="chapter-dots">{chapters.map((label, i) => <Button key={label} variant="ghost" className={`chapter-dot ${i === step ? "active" : ""}`} onClick={() => { setStep(i); if (i === chapters.length - 1) celebrate(); }} aria-label={`Go to ${label}`} aria-current={i === step ? "step" : undefined} />)}</div></div><span className="chapter-count">{step + 1}<span> / {chapters.length}</span></span><Button variant="round" className="next-chapter" disabled={step === chapters.length - 1} onClick={() => { setStep(step + 1); if (step === chapters.length - 2) celebrate(); }} aria-label="Next chapter"><ArrowRight size={21} /></Button></nav>}
       </main>
       <footer className="site-footer"><span>A DAY AS SPECIAL AS YOU ARE</span><Heart size={13} /><span>MADE WITH LOVE, JUST FOR YOU</span></footer>
     </div>

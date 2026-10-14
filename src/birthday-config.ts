@@ -12,6 +12,9 @@ export const birthdayConfig = {
   // Geburtsdatum im Format "Jahr-Monat-Tag"
   // Beispiel: "2009-10-31" für den 31. Oktober 2009
   birthDate: "2009-10-31",
+  // Eigener Song: Audiodatei in public ablegen und hier "/mein-song.mp3" eintragen.
+  // Ohne eigenen Song wird eine instrumentale Happy-Birthday-Melodie gespielt.
+  song: { title: "Happy Birthday", src: "/birthday-song.wav" },
 };
 
 // --- Ab hier muss nichts mehr geändert werden ---
