@@ -11,3 +11,4 @@
 
 - Keep the birthday gift journey in the index route with local React state, because its chapters are one continuous interactive experience.
 - Define birthday visuals and animations in the global design system, and use the shared Button for controls.
+- Keep song playback and microphone analysis browser-local in dedicated birthday scenes; release audio and microphone resources when leaving a chapter to avoid background listening.
